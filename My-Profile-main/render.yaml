@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: my-profile-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate --run-syncdb && python manage.py seed"
+    startCommand: "gunicorn core.wsgi:application --bind 0.0.0.0:$PORT --workers 1 --timeout 120"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: EMAIL_HOST_PASSWORD
+        value: mygg tzkg qqtl xuyq
+      - key: PYTHON_VERSION
+        value: "3.11.0"
